@@ -305,4 +305,15 @@ contract marketPlace is ERC1155Holder, ReentrancyGuard {
     {
         return _pokemon.fetchTrainerNfts();
     }
+
+    // Struct to hold all card types for a specific ID
+    struct fetchAllCard {
+        PokemonNFTs.pokemonCard _pokemonCard;
+        PokemonNFTs.energyCard _energyCard;
+        PokemonNFTs.trainerCard _trainerCard;
+    }
+
+    // Mapping to associate an ID with its corresponding fetchAllCard struct
+    mapping(uint256 => fetchAllCard) public idToAllCard;
+
 }
