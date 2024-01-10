@@ -12,11 +12,14 @@ import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./pokemon.sol";
 
-contract marketPlace is ERC1155Holder, ReentrancyGuard {
+contract marketplace is ERC1155Holder, ReentrancyGuard {
+    
     // Address of the deployed PokemonNFTs contract
     address pokemonAddress = 0xd9145CCE52D386f254917e481eB44e9943F39138;
     address private pokemonCardAddress = address(pokemonAddress);
     PokemonNFTs _pokemon = PokemonNFTs(pokemonCardAddress);
+
+   
 
     uint256 buyId;
     uint256 sellId;
@@ -283,7 +286,7 @@ contract marketPlace is ERC1155Holder, ReentrancyGuard {
     function fetchAllCards()
         public
         view
-        returns (PokemonNFTs.pokemonCard[] memory)
+        returns (PokemonNFTs.PokemonCard[] memory)
     {
         return _pokemon.fetchPokemonNfts();
     }
@@ -292,7 +295,7 @@ contract marketPlace is ERC1155Holder, ReentrancyGuard {
     function fetchAllCards4()
         public
         view
-        returns (PokemonNFTs.energyCard[] memory)
+        returns (PokemonNFTs.EnergyCard[] memory)
     {
         return _pokemon.fetchEnergyNfts();
     }
@@ -301,16 +304,16 @@ contract marketPlace is ERC1155Holder, ReentrancyGuard {
     function fetchAllCards3()
         public
         view
-        returns (PokemonNFTs.trainerCard[] memory)
+        returns (PokemonNFTs.TrainerCard[] memory)
     {
         return _pokemon.fetchTrainerNfts();
     }
 
     // Struct to hold all card types for a specific ID
     struct fetchAllCard {
-        PokemonNFTs.pokemonCard _pokemonCard;
-        PokemonNFTs.energyCard _energyCard;
-        PokemonNFTs.trainerCard _trainerCard;
+        PokemonNFTs.PokemonCard _pokemonCard;
+        PokemonNFTs.EnergyCard _energyCard;
+        PokemonNFTs.TrainerCard _trainerCard;
     }
 
     // Mapping to associate an ID with its corresponding fetchAllCard struct
