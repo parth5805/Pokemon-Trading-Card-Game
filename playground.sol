@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 import "./pokemon.sol";
+import "hardhat/console.sol";
+
 
 /**
  * @title PlayGround
@@ -9,6 +11,9 @@ import "./pokemon.sol";
  */
 
 contract PlayGround {
+
+    event LogResult(uint result);
+    event LogHello(string message);
 
     // Address of the PokemonNFTs contract
     address pokemonAddress = 0xd9145CCE52D386f254917e481eB44e9943F39138;
@@ -20,6 +25,11 @@ contract PlayGround {
         address player_address;
         uint[6] card_list;
     }
+
+
+    
+
+
 
     // Mapping to associate players with their Player struct
     mapping(address => Player) public players;
@@ -225,6 +235,7 @@ contract PlayGround {
 
     // Function for players to perform an attack using an energy card
     function attack(uint _energyCardId, uint _quantity) public onlyPlayer returns (bool) {
+
         require(checkCardTypeEnergy(_energyCardId), "Your NFTs is not the energy type");
         require(
             checkEnergyCardOwnerShip(_energyCardId, msg.sender),
@@ -251,11 +262,15 @@ contract PlayGround {
         );
 
         uint result;
+
         uint opponentCurrentHp = playerGameSettings[playerGameSettings[msg.sender].opponent].current_hp;
+
         (, , , , , , , , uint activePokemonDamage, ) = _pokemon.Pokemon_card_details(
             playerGameSettings[msg.sender].active_pokemon
         );
-        result = opponentCurrentHp - activePokemonDamage;
+
+        //result = opponentCurrentHp - activePokemonDamage;
+         result = opponentCurrentHp > activePokemonDamage ? opponentCurrentHp - activePokemonDamage : 0;
 
         if (result <= 0) {
             playerGameSettings[playerGameSettings[msg.sender].opponent].is_knocked[
