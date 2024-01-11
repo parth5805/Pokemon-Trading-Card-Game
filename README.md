@@ -1,4 +1,5 @@
 # Pokemon-Trading-Card-Game
+
 ## Disclaimer
 This Pokemon Trading Card Game (TCG) simulation code is not created or endorsed by the official Pokemon company. It is a personal project developed solely for educational purposes and to gain insights into Solidity programming for GameFi projects.
 
@@ -30,6 +31,12 @@ This repository contains Solidity smart contracts for creating and managing Poke
 - Users can sell their Pokemon cards at a specified price.
 - Includes logic for handling payments and transfers.
 
+### `Playground.sol`
+
+- Implements the actual game logic and rules for the Pokemon TCG.
+- Allows players to enter the game, set up their active Pokemon and bench, and start the game.
+- Handles player turns, attacks, and determines the winner based on the game rules.
+
 ## Usage
 
 1. Deploy the `pokemon.sol` contract on the Ethereum blockchain.
@@ -39,111 +46,55 @@ This repository contains Solidity smart contracts for creating and managing Poke
 
 **Note**: Make sure to test the contracts on a testnet before deploying them on the mainnet. Ensure that you have the required dependencies installed and configured.
 
-Happy Pokemon Trading Card Game On-Chain!
+**Scenario File: `scenario.json`**
+- Checkout the `scenario.json` file to see entire test cases and step-by-step instructions on how to run the code in Remix IDE.
 
-Certainly! Let's break down the major functionalities of the provided Solidity code for the Pokemon Trading Card Game (TCG) and discuss how they can be utilized in a game. I'll provide explanations for key functions and discuss how they align with gameplay.
+**Limitations of this Smart Contract:**
+1. Still in MVP Stage: The smart contract is in the Minimum Viable Product (MVP) stage for the Pokemon Trading Card Game, and there is room for more realistic features for Pokemon cards, energy cards, and trainer cards.
 
-pokemon.sol
-addPokemonCard
-This function allows the contract owner to add a new Pokemon card to the game. It mints a new NFT representing the Pokemon card and adds its details to the Pokemon_card_details mapping.
+2. Limited Card Selection: Currently, only a subset of Pokemon cards is implemented, and there are no trainer cards. Additional cards from the Pokemon game can be added to enhance the variety.
 
-Example
-// Assuming the contract owner calls this function
-addPokemonCard(0xMarketplaceAddress, 100, "Pikachu", "Electric", "Basic", "Thunder Shock", 2, 30, "Ground", 1, "0x", 1);
+3. Two-Player Limitation: The current implementation allows only two players to add cards at the same time. Enhancements can be made to support simultaneous play for more players.
 
-This example adds a Pikachu card with specific attributes to the game. The card is minted, and its details are stored in the contract.
+4. Manual Prize Card Minting: When a winner is decided, the minting and transfer of the prize card NFT are currently manual. Automation can be added to handle this process automatically.
 
-addEnergyCard
-Similar to addPokemonCard, this function adds a new Energy card to the game, minting an NFT and storing its details.
+5. Security Disclaimer: There may be potential loopholes or security issues in the current implementation. This smart contract is not recommended for production use.
 
-Example
-// Assuming the contract owner calls this function
-addEnergyCard(0xMarketplaceAddress, "Lightning Energy", "Electric", "0x", 1);
+6. Rule Alignment: Some rules may not align correctly with the original gameplay of the Pokemon Trading Card Game.
 
-This example adds a Lightning Energy card with specific attributes to the game.
+7. Not Officially Endorsed: This project is entirely designed by iamparth.eth and not by the Pokemon Company. It is for learning purposes, and a direct comparison with the actual gameplay is not warranted.
 
-addTrainerCard
-Adds a new Trainer card to the game.
+**NFT Gameplay Example:**
+Step 1: Enter the Game
+Players use the `enterIntoGame` function to join the Pokemon TCG and receive their NFT Pokemon cards. They select their initial set of NFT Pokemon cards to form their deck.
 
-Example:
+Step 2: Set Up Active Pokemon and Bench
+Players use the `addActivePokemon` function to choose their active NFT Pokemon. They use the `addPokemonInBench` function to add additional NFT Pokemon to their bench.
 
-// Assuming the contract owner calls this function
-addTrainerCard(0xMarketplaceAddress, "Ash", "Start the game with an extra card draw.", "0x", 1);
+Step 3: Start the Game
+The manager calls the `startGame` function to begin the Pokemon TCG. Players take turns playing NFT cards, attacking opponents, and strategizing to win.
 
-This example adds an Ash Trainer card with specific attributes to the game.
+Step 4: Gameplay Loop
+Players use the `attack` function to launch attacks using NFT energy cards. The game continues until a player's active NFT Pokemon faints, or victory conditions are met.
 
-fetchPokemonNfts, fetchEnergyNfts, fetchTrainerNfts
-These functions return arrays containing details of all Pokemon, Energy, and Trainer NFTs, respectively.
-
-Example:
-
-// Assuming a player calls this function to see their Pokemon cards
-pokemonNfts = fetchPokemonNfts();
-// Now 'pokemonNfts' contains an array with details of all Pokemon cards owned by the player.
+Step 5: Determine the Winner
+The smart contract determines the winner based on the game rules. The winner is declared, and the game concludes.
 
 
-marketPlace.sol
-buy
-Allows a player to buy a Pokemon card from the marketplace.
 
-Example:
+## How to Contribute
 
-// Assuming a player calls this function to buy a Pokemon card with ID 101
-buy(101, 1);
-// The player sends the correct amount of Ether, and the Pokemon card is transferred to their ownership.
+This project is open-source, and we encourage contributions from the community to enhance and improve the Pokemon Trading Card Game On-Chain. If you find any issues, have suggestions for improvements, or want to add new features, follow the steps below:
 
-sell
-Allows a player to sell their Pokemon card on the marketplace.
+1. **Issue Reporting**: If you encounter any bugs or have ideas for enhancements, please [open an issue](link_to_issues) on GitHub. Provide a clear and detailed description, including steps to reproduce the issue.
 
-Example:
-// Assuming a player calls this function to sell one unit of their Pokemon card with ID 102 at a price of 2 Ether
-sell(102, 1, 2 ether);
-// The player transfers the Pokemon card to the marketplace, and the card is available for other players to buy.
+2. **Feature Requests**: If you have ideas for new features or improvements, you can [open an issue](link_to_issues) to discuss the proposal. We appreciate your input and will consider it for future updates.
 
-PlayGround.sol
-This contract represents the game logic and player interactions.
+3. **Pull Requests**: If you want to contribute directly, feel free to [submit a pull request](link_to_pull_requests) with your changes. Ensure that your code follows best practices and includes appropriate test cases. We'll review your contribution and merge it if it aligns with the project goals.
 
-enterIntoGame
-A player enters the game by specifying their initial Pokemon cards.
+## License
 
-Example:
-// A player calls this function to enter the game with a team of Pokemon cards.
-enterIntoGame([101, 102, 103, 104, 105, 106]);
+This project is licensed under the [MIT License](link_to_license). By contributing to this open-source project, you agree to the terms and conditions outlined in the license.
 
-startGame
-The manager (possibly the game creator) starts the game, initiating the game state.
+Thank you for your interest and contributions to the Pokemon Trading Card Game On-Chain!
 
-Example:
-// The manager calls this function to start the game once all players have entered.
-startGame();
-
-flipacoin
-The manager flips a coin to determine the starting player.
-
-Example:
-
-// The manager calls this function to randomly select the starting player.
-flipacoin();
-
-addActivePokemon, addPokemonInBench
-Players set their active Pokemon and bench Pokemon.
-
-Example:
-// A player calls these functions to set their active Pokemon and bench Pokemon.
-addActivePokemon(101);
-addPokemonInBench([102, 103, 104, 105, 106]);
-
-attack
-A player attacks the opponent using energy cards.
-
-Example:
-// A player calls this function to attack the opponent with a specific energy card.
-attack(201, 2);
-
-Please note that these examples are simplified for illustration purposes, and you may need to adapt them based on the actual gameplay mechanics and rules you want to implement. The provided functions give you a starting point to build upon for a Pokemon Trading Card Game on the blockchain.
-
-Contributing
-If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
-
-License
-This project is licensed under the MIT License.
