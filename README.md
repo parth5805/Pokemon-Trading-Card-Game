@@ -62,7 +62,7 @@ This repository contains Solidity smart contracts for creating and managing Poke
 
 6. Rule Alignment: Some rules may not align correctly with the original gameplay of the Pokemon Trading Card Game.
 
-7. Not Officially Endorsed: This project is entirely designed by iamparth.eth and not by the Pokemon Company. It is for learning purposes, and a direct comparison with the actual gameplay is not warranted.
+7. Not Officially Endorsed: This project is entirely designed by [iamparth.eth](https://twitter.com/iamparth_eth) and not by the Pokemon Company. It is for learning purposes, and a direct comparison with the actual gameplay is not warranted.
 
 **NFT Gameplay Example:**
 Step 1: Enter the Game
@@ -86,11 +86,11 @@ The smart contract determines the winner based on the game rules. The winner is 
 
 This project is open-source, and we encourage contributions from the community to enhance and improve the Pokemon Trading Card Game On-Chain. If you find any issues, have suggestions for improvements, or want to add new features, follow the steps below:
 
-1. **Issue Reporting**: If you encounter any bugs or have ideas for enhancements, please [open an issue](link_to_issues) on GitHub. Provide a clear and detailed description, including steps to reproduce the issue.
+1. **Issue Reporting**: If you encounter any bugs or have ideas for enhancements, please [open an issue](https://github.com/parth5805/Pokemon-Trading-Card-Game/issues/new) on GitHub. Provide a clear and detailed description, including steps to reproduce the issue.
 
-2. **Feature Requests**: If you have ideas for new features or improvements, you can [open an issue](link_to_issues) to discuss the proposal. We appreciate your input and will consider it for future updates.
+2. **Feature Requests**: If you have ideas for new features or improvements, you can [open an issue](https://github.com/parth5805/Pokemon-Trading-Card-Game/issues/new) to discuss the proposal. We appreciate your input and will consider it for future updates.
 
-3. **Pull Requests**: If you want to contribute directly, feel free to [submit a pull request](link_to_pull_requests) with your changes. Ensure that your code follows best practices and includes appropriate test cases. We'll review your contribution and merge it if it aligns with the project goals.
+3. **Pull Requests**: If you want to contribute directly, feel free to [submit a pull request](https://github.com/parth5805/Pokemon-Trading-Card-Game/pulls) with your changes. Ensure that your code follows best practices and includes appropriate test cases. We'll review your contribution and merge it if it aligns with the project goals.
 
 ## License
 
