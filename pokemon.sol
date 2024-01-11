@@ -52,7 +52,7 @@ contract PokemonNFTs is ERC1155, Ownable {
     event energyNFT(address indexed _to, uint amount, uint indexed _tokenId, string _cardType, string _name, string _color);
     event trainerNFT(address indexed _to, uint amount, uint indexed _tokenId, string _cardType, string _name, string _taskDetails);
 
-    constructor() ERC1155("") {}
+    constructor() ERC1155("") Ownable(msg.sender) {}
 
     /**
      * @dev Function to add a new Pokemon card NFT.
