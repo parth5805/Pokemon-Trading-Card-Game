@@ -56,7 +56,7 @@ contract PokemonNFTs is ERC1155, Ownable {
 
     /**
      * @dev Function to add a new Pokemon card NFT.
-     * @param _marketplaceAddress Address to receive the newly minted NFT.
+     * @param _receiverAddress Address to receive the newly minted NFT.
      * @param _hp Number of Health Points (HP) of the Pokemon card.
      * @param _name Name of the Pokemon.
      * @param _pokemonType Type of the Pokemon card.
@@ -69,8 +69,8 @@ contract PokemonNFTs is ERC1155, Ownable {
      * @param _data Additional data to pass to the receiver on a safe transfer.
      * @return Boolean indicating whether the operation was successful.
      */
-    function addPokemonCard(address _marketplaceAddress, uint _hp, string memory _name, string memory _pokemonType, string memory _stage, string memory _attack, uint _quantity, uint _damage, string memory _weak, uint _amount, bytes memory _data) public onlyOwner returns (bool) {
-        _mint(_marketplaceAddress, nextId, _amount, _data);
+    function addPokemonCard(address _receiverAddress, uint _hp, string memory _name, string memory _pokemonType, string memory _stage, string memory _attack, uint _quantity, uint _damage, string memory _weak, uint _amount, bytes memory _data) public onlyOwner returns (bool) {
+        _mint(_receiverAddress, nextId, _amount, _data);
         Pokemon_card_details[nextId] = PokemonCard(nextId, "pokemon", _hp, _name, _pokemonType, _stage, _attack, _quantity, _damage, _weak);
         emit pokemonNFT(msg.sender, _amount, nextId, "pokemon", _hp, _name, _pokemonType, _stage, _attack, _quantity, _damage, _weak);
         nextId++;
@@ -79,15 +79,15 @@ contract PokemonNFTs is ERC1155, Ownable {
 
     /**
      * @dev Function to add a new Energy card NFT.
-     * @param _marketplaceAddress Address to receive the newly minted NFT.
+     * @param _receiverAddress Address to receive the newly minted NFT.
      * @param _name Name of the energy.
      * @param _color Color of the energy.
      * @param _amount Amount of NFTs to mint.
      * @param _data Additional data to pass to the receiver on a safe transfer.
      * @return Boolean indicating whether the operation was successful.
      */
-    function addEnergyCard(address _marketplaceAddress, string memory _name, string memory _color, uint _amount, bytes memory _data) public onlyOwner returns (bool) {
-        _mint(_marketplaceAddress, nextId, _amount, _data);
+    function addEnergyCard(address _receiverAddress, string memory _name, string memory _color, uint _amount, bytes memory _data) public onlyOwner returns (bool) {
+        _mint(_receiverAddress, nextId, _amount, _data);
         Energy_card_details[nextId] = EnergyCard(nextId, "energy", _name, _color);
         emit energyNFT(msg.sender, _amount, nextId, "energy", _name, _color);
         nextId++;
@@ -96,15 +96,15 @@ contract PokemonNFTs is ERC1155, Ownable {
 
     /**
      * @dev Function to add a new Trainer card NFT.
-     * @param _marketplaceAddress Address to receive the newly minted NFT.
+     * @param _receiverAddress Address to receive the newly minted NFT.
      * @param _name Name of the Trainer.
      * @param _taskDetails Information about the task the Trainer can perform.
      * @param _amount Amount of NFTs to mint.
      * @param _data Additional data to pass to the receiver on a safe transfer.
      * @return Boolean indicating whether the operation was successful.
      */
-    function addTrainerCard(address _marketplaceAddress, string memory _name, string memory _taskDetails, uint _amount, bytes memory _data) public onlyOwner returns (bool) {
-        _mint(_marketplaceAddress, nextId, _amount, _data);
+    function addTrainerCard(address _receiverAddress, string memory _name, string memory _taskDetails, uint _amount, bytes memory _data) public onlyOwner returns (bool) {
+        _mint(_receiverAddress, nextId, _amount, _data);
         Trainer_card_details[nextId] = TrainerCard(nextId, "trainer", _name, _taskDetails);
         emit trainerNFT(msg.sender, _amount, nextId, "trainer", _name, _taskDetails);
         nextId++;
