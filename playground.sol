@@ -48,7 +48,7 @@ contract PlayGround {
     // Address of the player who has the current turn
     address public current_turn;
     // Address of the winner
-    address winner;
+    address public winner;
 
     // Constructor to set the manager address
     constructor() {
